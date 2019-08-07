@@ -29,7 +29,9 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 
 	@Override
 	public Queue<T> enQueue(T t) {
-		ArrayList<T> list = new ArrayList<>(this.queue);
+		ArrayList<T> list = new ArrayList<>();
+		if(this.queue != null)
+			list.addAll(this.queue);
 		/** since the provided api does not throws any Exception I'm forced to log the message and returns an empty queue */
 		if(t == null) {
 			System.out.println("Could not process operation");
