@@ -1,5 +1,7 @@
 package com.util.immutablequeue;
 
+import com.util.immutablequeue.impl.ImmutableQueueTest;
+
 import junit.framework.Test;
 import junit.framework.TestCase;
 import junit.framework.TestSuite;
@@ -25,7 +27,9 @@ public class AppTest
      */
     public static Test suite()
     {
-        return new TestSuite( AppTest.class );
+    	TestSuite suite =  new TestSuite();
+    	suite.addTest(ImmutableQueueTest.suite());
+        return suite;
     }
 
     /**
@@ -34,5 +38,12 @@ public class AppTest
     public void testApp()
     {
         assertTrue( true );
+    }
+    
+    public static void main(String[] args) {
+    	String[] testCaseName = {
+    			AppTest.class.getName()
+            };
+            junit.textui.TestRunner.main(testCaseName);
     }
 }

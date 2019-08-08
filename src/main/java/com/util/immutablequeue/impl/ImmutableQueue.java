@@ -27,6 +27,9 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 		this.queue = null;
 	}
 
+	/**
+	 * to add item to queue in the tail end
+	 */
 	@Override
 	public Queue<T> enQueue(T t) {
 		ArrayList<T> list = new ArrayList<>();
@@ -50,7 +53,7 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 			System.out.println("Could not process request ");
 		}
 		return (isEmpty() || queue.size() < 2) ? new ImmutableQueue<T>()
-				: new ImmutableQueue<T>(new ArrayList<T>(queue.subList(1, queue.size() - 1)));
+				: new ImmutableQueue<T>(new ArrayList<T>(queue.subList(1, queue.size())));
 	}
 
 	/**
@@ -86,10 +89,10 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 * @return Queue<T>
 	 * @throws CouldNotProcessOperationException
 	 */
-	public Queue<T> remove() throws CouldNotProcessOperationException{
+	public ImmutableQueue<T> remove() throws CouldNotProcessOperationException{
 		if(isEmpty()) {
 			throw new CouldNotProcessOperationException(new NoSuchElementException());
 		}
-		return queue.size() < 2 ? new ImmutableQueue<T>() : new ImmutableQueue<T>(new ArrayList<T>(queue.subList(1, queue.size() - 1)));
+		return this.queue.size() < 2 ? new ImmutableQueue<T>() : new ImmutableQueue<T>(new ArrayList<T>(this.queue.subList(1, queue.size() - 1)));
 	}
 }

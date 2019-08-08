@@ -8,12 +8,6 @@ import com.util.immutablequeue.impl.ImmutableQueue;
  */
 public class App {
     public static void main( String[] args ){
-        System.out.println( "Immutable Queue!" );
         Queue<Integer> queue = new ImmutableQueue<>();
-        System.out.println(queue);
-        queue = queue.enQueue(1);
-        System.out.println(queue);
-        queue = queue.deQueue();
-        System.out.println(queue);
     }
 }
