@@ -36,6 +36,8 @@ public class ImmutableQueueTest extends TestCase{
 	 */
 	public void test_Enqueue() {
 		Queue<Integer> immutableQueue = new ImmutableQueue<>();
+		immutableQueue = immutableQueue.enQueue(null);
+		assertTrue(immutableQueue.isEmpty());
 		/** adding items into queue*/
 		immutableQueue = immutableQueue.enQueue(1).enQueue(2);
 		/** checking not empty condition*/

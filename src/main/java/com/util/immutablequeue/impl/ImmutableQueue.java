@@ -32,11 +32,14 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 */
 	@Override
 	public Queue<T> enQueue(T t) {
+		ArrayList<T> list = null;
 		/** Creating arrayList with fixed size, to avoid extra space allocation */
-		ArrayList<T> list = new ArrayList<>(this.queue == null ? 1 : this.queue.size()+ (t == null ? 0 :1));
+		int size = (this.queue == null && t!= null ) ? 1 : (this.queue != null ? this.queue.size() : 0)+ (t == null ? 0 :1);
+		if(size > 0)
+			list =  new ArrayList<>(size);
 		if(this.queue != null)
 			list.addAll(this.queue);
-		/** since the provided api does not throws any Exception I'm forced to log the message and returns an empty queue */
+		/** since the provided api does not throws any Exception I'm forced to log the message and returns the existing queue */
 		if(t == null) {
 			System.out.println("Could not process operation");
 		}else
