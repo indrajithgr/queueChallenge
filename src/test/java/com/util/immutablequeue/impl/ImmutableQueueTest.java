@@ -10,7 +10,7 @@ import junit.framework.TestSuite;
  * @author Indrajith G R Aug 8, 2019 11:25:40 AM
  */
 public class ImmutableQueueTest extends TestCase{
-	
+	private Queue<Integer> immutableQueue = new ImmutableQueue<>();
 	/**
      * @return the suite with current test class
      */
@@ -20,9 +20,8 @@ public class ImmutableQueueTest extends TestCase{
     
 	/**
 	 * Checking immutability by verifying the reference after method calls
-	 */ 
+	 */
 	public void test_Immutability() {
-		Queue<Integer> immutableQueue = new ImmutableQueue<>();
 		Queue<Integer> immutableQueueAfterEnQueue = immutableQueue.enQueue(1);
 		/** verifying enqueue method */
 		assertFalse(immutableQueueAfterEnQueue == immutableQueue);
@@ -35,9 +34,6 @@ public class ImmutableQueueTest extends TestCase{
 	 * For testing enqueue empty and head check
 	 */
 	public void test_Enqueue() {
-		Queue<Integer> immutableQueue = new ImmutableQueue<>();
-		immutableQueue = immutableQueue.enQueue(null);
-		assertTrue(immutableQueue.isEmpty());
 		/** adding items into queue*/
 		immutableQueue = immutableQueue.enQueue(1).enQueue(2);
 		/** checking not empty condition*/
@@ -50,7 +46,6 @@ public class ImmutableQueueTest extends TestCase{
 	 * For testing queue empty and non empty conditions
 	 */
 	public void test_isEmpty() {
-		Queue<Integer> immutableQueue = new ImmutableQueue<>();
 		/** empty condition */
 		assertTrue(immutableQueue.isEmpty());
 		immutableQueue = immutableQueue.enQueue(1);
@@ -62,7 +57,6 @@ public class ImmutableQueueTest extends TestCase{
 	 * For testing head method with empty and multiple entry conditions
 	 */
 	public void test_head() {
-		Queue<Integer> immutableQueue = new ImmutableQueue<>();
 		/** null when queue is empty */
 		assertNull(immutableQueue.head());
 		immutableQueue = immutableQueue.enQueue(2).enQueue(1);
@@ -73,7 +67,6 @@ public class ImmutableQueueTest extends TestCase{
 	 * For testing deQueue method with multiple entry conditions
 	 */
 	public void test_deQueue() {
-		Queue<Integer> immutableQueue = new ImmutableQueue<>();
 		immutableQueue = immutableQueue.enQueue(5).enQueue(10).enQueue(20);
 		assertFalse(immutableQueue.isEmpty());
 		immutableQueue = immutableQueue.deQueue();

@@ -31,7 +31,7 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 * to add item to queue in the tail end
 	 */
 	@Override
-	public Queue<T> enQueue(T t) {
+	public final Queue<T> enQueue(T t) {
 		ArrayList<T> list = null;
 		/** Creating arrayList with fixed size, to avoid extra space allocation */
 		int size = (this.queue == null && t!= null ) ? 1 : (this.queue != null ? this.queue.size() : 0)+ (t == null ? 0 :1);
@@ -51,7 +51,7 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 * Removes the element at the beginning of the immutable queue and returns the new queue
 	 */
 	@Override
-	public Queue<T> deQueue() {
+	public final Queue<T> deQueue() {
 		if (isEmpty()) {
 			/** since the provided api does not throws any Exception I'm forced to log the message and returns an empty queue */
 			System.out.println("Could not process request ");
@@ -66,7 +66,7 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 * If the queue is empty then returns null
 	 */
 	@Override
-	public T head() {
+	public final T head() {
 		return isEmpty() ? null : queue.get(0);
 	}
 
@@ -82,7 +82,7 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 * To return the size of objects in the queue
 	 * @return int
 	 */
-	public int getSize() {
+	public final int getSize() {
 		return isEmpty() ? 0 : this.queue.size();
 	}
 
@@ -93,7 +93,7 @@ public final class ImmutableQueue<T> implements Queue<T>, Serializable {
 	 * @return Queue<T>
 	 * @throws CouldNotProcessOperationException
 	 */
-	public ImmutableQueue<T> remove() throws CouldNotProcessOperationException{
+	public final ImmutableQueue<T> remove() throws CouldNotProcessOperationException{
 		if(isEmpty()) {
 			throw new CouldNotProcessOperationException(new NoSuchElementException());
 		}
